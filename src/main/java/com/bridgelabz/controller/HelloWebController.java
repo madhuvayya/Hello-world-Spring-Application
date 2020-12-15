@@ -1,14 +1,20 @@
 package com.bridgelabz.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
-@RequestMapping("/hello")
+@Controller
 public class HelloWebController {
 	
-	@RequestMapping(value= {"/","","/home"})
+	@GetMapping("/web")
 	public String hello() {
-		return "Hello from Bridgelabz";
+		return "hello";
+	}
+	
+	@GetMapping("/web/message")
+	public String message(Model model) {
+		model.addAttribute("message","This is a custom message");
+		return "message";
 	}
 }
